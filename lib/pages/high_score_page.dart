@@ -44,8 +44,7 @@ class HighScorePage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 10),
-            SizedBox(
-              height: 580,
+            Flexible(
               child: FutureBuilder<List<Map<String, dynamic>>>(
                 future: GameStorage.loadScores(),
                 builder: (context, snapshot) {
@@ -122,6 +121,7 @@ class HighScorePage extends StatelessWidget {
               },
               child: const Text('Back to Menu', style: TextStyle(fontSize: 25)),
             ),
+            const SizedBox(height: 40),
           ],
         ),
       ),

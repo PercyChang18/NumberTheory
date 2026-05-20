@@ -24,7 +24,7 @@ class Number extends PositionComponent with HasGameReference<NumberTheoryGame> {
           foreground: Paint()
             ..style = PaintingStyle.stroke
             ..strokeWidth =
-                4.0 // thickness of the outline
+                1.5 // thickness of the outline
             ..color = Colors.black,
         ),
       ),

@@ -62,6 +62,9 @@ class NumberTheoryGame extends FlameGame
 
   // Start the game. This is only called when user starts the game from main menu.
   void startGame() {
+    if (Configuration.soundEnabled) {
+      startBgm();
+    }
     addAll([ground = Ground(), dino = Dino(), score = buildScore()]);
     interval.stop();
     interval.reset();

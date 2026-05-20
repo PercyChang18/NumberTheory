@@ -21,42 +21,44 @@ class _DifficultyPageState extends State<DifficultyPage> {
     return Material(
       color: Colors.transparent,
       child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'DIFFICULTY',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 48,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-            SizedBox(height: 40),
-            _difficultyButton(Difficulty.easy),
-            SizedBox(height: 20),
-            _difficultyButton(Difficulty.medium),
-            SizedBox(height: 20),
-            _difficultyButton(Difficulty.hard),
-
-            SizedBox(height: 40),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF9D92F5),
-                foregroundColor: Colors.white,
-                minimumSize: const Size(230, 50),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'DIFFICULTY',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 48,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
                 ),
               ),
-              onPressed: () {
-                game.overlays.remove('difficulty');
-                game.overlays.add('mainMenu');
-              },
-              child: Text('Back to Menu', style: TextStyle(fontSize: 25)),
-            ),
-          ],
+              SizedBox(height: 40),
+              _difficultyButton(Difficulty.easy),
+              SizedBox(height: 20),
+              _difficultyButton(Difficulty.medium),
+              SizedBox(height: 20),
+              _difficultyButton(Difficulty.hard),
+
+              SizedBox(height: 40),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF9D92F5),
+                  foregroundColor: Colors.white,
+                  minimumSize: const Size(230, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                onPressed: () {
+                  game.overlays.remove('difficulty');
+                  game.overlays.add('mainMenu');
+                },
+                child: Text('Back to Menu', style: TextStyle(fontSize: 25)),
+              ),
+            ],
+          ),
         ),
       ),
     );
