@@ -57,6 +57,7 @@ class _DifficultyPageState extends State<DifficultyPage> {
                 },
                 child: Text('Back to Menu', style: TextStyle(fontSize: 25)),
               ),
+              const SizedBox(height: 20),
             ],
           ),
         ),

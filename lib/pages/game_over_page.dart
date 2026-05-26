@@ -44,6 +44,7 @@ class GameOverPage extends StatelessWidget {
               onPressed: backToMain,
               child: Text('Back to Menu', style: TextStyle(fontSize: 25)),
             ),
+            const SizedBox(height: 20),
           ],
         ),
       ),

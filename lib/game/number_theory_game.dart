@@ -23,6 +23,7 @@ class NumberTheoryGame extends FlameGame
   late Ground ground;
   late TextComponent score;
   bool isPlaying = false;
+  // static final Vector2 targetSize = Vector2(1032, 743);
 
   // For the 3 buttons group alone with each shape.
   PositionComponent? buttonContainer;
@@ -33,6 +34,11 @@ class NumberTheoryGame extends FlameGame
 
   @override
   Future<void> onLoad() async {
+    debugPrint(size.toString());
+    // camera = CameraComponent.withFixedResolution(
+    //   width: targetSize.x,
+    //   height: targetSize.y,
+    // );
     // debugMode = true;
     Configuration.currentDifficulty = await GameStorage.loadDifficulty();
     Configuration.soundEnabled = await GameStorage.loadSoundPreference();
@@ -62,9 +68,9 @@ class NumberTheoryGame extends FlameGame
 
   // Start the game. This is only called when user starts the game from main menu.
   void startGame() {
-    if (Configuration.soundEnabled) {
-      startBgm();
-    }
+    // if (Configuration.soundEnabled) {
+    //   startBgm();
+    // }
     addAll([ground = Ground(), dino = Dino(), score = buildScore()]);
     interval.stop();
     interval.reset();

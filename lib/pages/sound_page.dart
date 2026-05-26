@@ -20,39 +20,42 @@ class _SoundPageState extends State<SoundPage> {
     return Material(
       color: Colors.transparent,
       child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'SOUND',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 48,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-            SizedBox(height: 40),
-            _soundButton(true),
-            SizedBox(height: 20),
-            _soundButton(false),
-            SizedBox(height: 20),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF9D92F5),
-                foregroundColor: Colors.white,
-                minimumSize: const Size(230, 50),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'SOUND',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 48,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
                 ),
               ),
-              onPressed: () {
-                game.overlays.remove('sound');
-                game.overlays.add('mainMenu');
-              },
-              child: Text('Back to Menu', style: TextStyle(fontSize: 25)),
-            ),
-          ],
+              SizedBox(height: 40),
+              _soundButton(true),
+              SizedBox(height: 20),
+              _soundButton(false),
+              SizedBox(height: 20),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF9D92F5),
+                  foregroundColor: Colors.white,
+                  minimumSize: const Size(230, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                onPressed: () {
+                  game.overlays.remove('sound');
+                  game.overlays.add('mainMenu');
+                },
+                child: Text('Back to Menu', style: TextStyle(fontSize: 25)),
+              ),
+              const SizedBox(height: 20),
+            ],
+          ),
         ),
       ),
     );

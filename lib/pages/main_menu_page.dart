@@ -14,99 +14,97 @@ class MainMenuPage extends StatelessWidget {
     return Material(
       color: Colors.transparent,
       child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 200,
-              width: 200,
-              child: Transform.scale(
-                scale: 2.0,
-                child: Image.asset(
-                  'assets/images/${Assets.icon}',
-                  fit: BoxFit.contain,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/images/${Assets.icon}',
+                width: 420,
+                height: 220,
+                fit: BoxFit.cover,
+              ),
+              Text(
+                'DIFFICULTY',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
                 ),
               ),
-            ),
-            Text(
-              'DIFFICULTY',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+              Text(
+                Configuration.currentDifficulty.name.toUpperCase(),
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 24, color: Colors.white),
               ),
-            ),
-            Text(
-              Configuration.currentDifficulty.name.toUpperCase(),
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 24, color: Colors.white),
-            ),
-            const SizedBox(height: 30),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF9D92F5),
-                foregroundColor: Colors.white,
-                minimumSize: const Size(230, 50),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+              const SizedBox(height: 30),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF9D92F5),
+                  foregroundColor: Colors.white,
+                  minimumSize: const Size(230, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                 ),
+                onPressed: () {
+                  game.overlays.remove('mainMenu');
+                  game.startGame();
+                },
+                child: Text('START GAME', style: TextStyle(fontSize: 25)),
               ),
-              onPressed: () {
-                game.overlays.remove('mainMenu');
-                game.startGame();
-              },
-              child: Text('START GAME', style: TextStyle(fontSize: 25)),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF9D92F5),
-                foregroundColor: Colors.white,
-                minimumSize: const Size(230, 50),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF9D92F5),
+                  foregroundColor: Colors.white,
+                  minimumSize: const Size(230, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                 ),
+                onPressed: () {
+                  game.overlays.remove('mainMenu');
+                  game.overlays.add('difficulty');
+                },
+                child: Text('DIFFICULTY', style: TextStyle(fontSize: 25)),
               ),
-              onPressed: () {
-                game.overlays.remove('mainMenu');
-                game.overlays.add('difficulty');
-              },
-              child: Text('DIFFICULTY', style: TextStyle(fontSize: 25)),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF9D92F5),
-                foregroundColor: Colors.white,
-                minimumSize: const Size(230, 50),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF9D92F5),
+                  foregroundColor: Colors.white,
+                  minimumSize: const Size(230, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                 ),
+                onPressed: () {
+                  game.overlays.remove('mainMenu');
+                  game.overlays.add('highScore');
+                },
+                child: Text('HIGH SCORE', style: TextStyle(fontSize: 25)),
               ),
-              onPressed: () {
-                game.overlays.remove('mainMenu');
-                game.overlays.add('highScore');
-              },
-              child: Text('HIGH SCORE', style: TextStyle(fontSize: 25)),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF9D92F5),
-                foregroundColor: Colors.white,
-                minimumSize: const Size(230, 50),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF9D92F5),
+                  foregroundColor: Colors.white,
+                  minimumSize: const Size(230, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                 ),
+                onPressed: () {
+                  game.overlays.remove('mainMenu');
+                  game.overlays.add('sound');
+                },
+                child: Text('SOUND', style: TextStyle(fontSize: 25)),
               ),
-              onPressed: () {
-                game.overlays.remove('mainMenu');
-                game.overlays.add('sound');
-              },
-              child: Text('SOUND', style: TextStyle(fontSize: 25)),
-            ),
-          ],
+              const SizedBox(height: 20),
+            ],
+          ),
         ),
       ),
     );
