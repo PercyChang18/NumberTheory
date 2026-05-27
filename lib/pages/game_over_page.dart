@@ -56,7 +56,7 @@ class GameOverPage extends StatelessWidget {
       game.startBgm();
     }
     game.dino.reset();
-    game.children.query<Number>().forEach((p) => p.removeFromParent());
+    game.world.children.query<Number>().forEach((p) => p.removeFromParent());
     game.buttonContainer?.removeFromParent();
     game.interval.stop(); // Stop the current ticking
     game.interval.reset(); // Put it back to 0:00
@@ -70,7 +70,7 @@ class GameOverPage extends StatelessWidget {
       game.startBgm();
     }
     game.isPlaying = false;
-    game.children.query<Number>().forEach((p) => p.removeFromParent());
+    game.world.children.query<Number>().forEach((p) => p.removeFromParent());
     game.buttonContainer?.removeFromParent();
     game.dino.removeFromParent();
     game.ground.removeFromParent();

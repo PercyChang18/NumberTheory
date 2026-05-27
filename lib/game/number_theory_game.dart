@@ -23,7 +23,7 @@ class NumberTheoryGame extends FlameGame
   late Ground ground;
   late TextComponent score;
   bool isPlaying = false;
-  // static final Vector2 targetSize = Vector2(1032, 743);
+  static final Vector2 windowSize = Vector2(1280, 720);
 
   // For the 3 buttons group alone with each shape.
   PositionComponent? buttonContainer;
@@ -35,14 +35,16 @@ class NumberTheoryGame extends FlameGame
   @override
   Future<void> onLoad() async {
     debugPrint(size.toString());
-    // camera = CameraComponent.withFixedResolution(
-    //   width: targetSize.x,
-    //   height: targetSize.y,
-    // );
+    camera = CameraComponent.withFixedResolution(
+      width: windowSize.x,
+      height: windowSize.y,
+    );
+
+    camera.viewfinder.anchor = Anchor.topLeft;
     // debugMode = true;
     Configuration.currentDifficulty = await GameStorage.loadDifficulty();
     Configuration.soundEnabled = await GameStorage.loadSoundPreference();
-    add(Background());
+    world.add(Background());
 
     await FlameAudio.bgm.initialize();
     await FlameAudio.audioCache.load(Assets.bgm);
@@ -71,7 +73,7 @@ class NumberTheoryGame extends FlameGame
     // if (Configuration.soundEnabled) {
     //   startBgm();
     // }
-    addAll([ground = Ground(), dino = Dino(), score = buildScore()]);
+    world.addAll([ground = Ground(), dino = Dino(), score = buildScore()]);
     interval.stop();
     interval.reset();
     interval.onTick = () => _spawnRandomNumber();
@@ -84,7 +86,7 @@ class NumberTheoryGame extends FlameGame
 
     buttonContainer?.removeFromParent();
     buttonContainer = PositionComponent();
-    add(buttonContainer!);
+    world.add(buttonContainer!);
 
     final numbers = generateRandomNumberButtons(correctNumber);
     double startX = (size.x - Configuration.totalWidth) / 2;
@@ -102,7 +104,7 @@ class NumberTheoryGame extends FlameGame
       );
     }
 
-    add(Number(number: correctNumber));
+    world.add(Number(number: correctNumber));
   }
 
   void _spawnRandomNumber() {
