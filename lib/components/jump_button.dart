@@ -6,10 +6,11 @@ import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:shape_theory/components/button_frame.dart';
 import 'package:shape_theory/game/configuration.dart';
+import 'package:shape_theory/game/game_loop.dart';
 import 'package:shape_theory/game/number_theory_game.dart';
 
 // This class is the buttons for users to click in game.
-class JumpButton extends HudButtonComponent {
+class JumpButton extends HudButtonComponent with TapCallbacks {
   final String label;
   final int number;
   late final ButtonFrame bf;
@@ -50,7 +51,8 @@ class JumpButton extends HudButtonComponent {
   @override
   void onTapDown(TapDownEvent event) {
     super.onTapDown(event);
-    final myGame = game as NumberTheoryGame;
+    debugPrint("Button $label tap");
+    final myGame = parent?.parent as GameLoop;
     // If this button is the correct one, light up the button and allow, or flash a red color to indicate this button is wrong. Dino can only jump when the button clicked is correct.
     if (myGame.activeNumber == number) {
       bf.add(

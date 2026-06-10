@@ -13,14 +13,14 @@ void main() {
   runApp(
     GameWidget(
       game: game,
-      initialActiveOverlays: [MainMenuPage.id],
-      overlayBuilderMap: {
-        'mainMenu': (context, _) => MainMenuPage(game: game),
-        'gameOver': (context, _) => GameOverPage(game: game),
-        'difficulty': (context, _) => DifficultyPage(game: game),
-        'highScore': (context, _) => HighScorePage(game: game),
-        'sound': (context, _) => SoundPage(game: game),
-      },
+      // initialActiveOverlays: [MainMenuPage.id],
+      // overlayBuilderMap: {
+      //   'mainMenu': (context, _) => MainMenuPage(game: game),
+      //   'gameOver': (context, _) => GameOverPage(game: game),
+      //   'difficulty': (context, _) => DifficultyPage(game: game),
+      //   'highScore': (context, _) => HighScorePage(game: game),
+      //   'sound': (context, _) => SoundPage(game: game),
+      // },
     ),
   );
 }

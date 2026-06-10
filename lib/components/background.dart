@@ -4,7 +4,7 @@ import 'package:shape_theory/game/assets.dart';
 import 'package:shape_theory/game/configuration.dart';
 import 'package:shape_theory/game/number_theory_game.dart';
 
-class Background extends ParallaxComponent<NumberTheoryGame> {
+class Background extends ParallaxComponent<NumberTheoryGame> with HasTimeScale {
   Background();
 
   @override

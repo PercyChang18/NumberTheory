@@ -87,7 +87,6 @@ class Number extends PositionComponent with HasGameReference<NumberTheoryGame> {
     position.x -= Configuration.currentDifficulty.settings.speed * dt;
 
     if (position.x < -size.x) {
-      // Logic to clear active number (replace with your GameState logic)
       removeFromParent();
       updateScore();
       debugPrint('Number $number Removed');
@@ -95,7 +94,7 @@ class Number extends PositionComponent with HasGameReference<NumberTheoryGame> {
   }
 
   void updateScore() {
-    game.dino.score +=
+    game.gameLoop.dino.score +=
         Configuration.currentDifficulty.settings.scorePerObstacle;
   }
 }

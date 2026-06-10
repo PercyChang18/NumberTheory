@@ -55,7 +55,7 @@ class GameOverPage extends StatelessWidget {
     if (Configuration.soundEnabled) {
       game.startBgm();
     }
-    game.dino.reset();
+    game.gameLoop.dino.reset();
     game.world.children.query<Number>().forEach((p) => p.removeFromParent());
     game.buttonContainer?.removeFromParent();
     game.interval.stop(); // Stop the current ticking
@@ -72,9 +72,9 @@ class GameOverPage extends StatelessWidget {
     game.isPlaying = false;
     game.world.children.query<Number>().forEach((p) => p.removeFromParent());
     game.buttonContainer?.removeFromParent();
-    game.dino.removeFromParent();
-    game.ground.removeFromParent();
-    game.score.removeFromParent();
+    game.gameLoop.dino.removeFromParent();
+    game.gameLoop.ground.removeFromParent();
+    game.gameLoop.score.removeFromParent();
     game.overlays.remove('gameOver');
     game.overlays.add('mainMenu');
     game.resumeEngine();

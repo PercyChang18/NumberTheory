@@ -2,6 +2,7 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
 import 'package:flutter/material.dart';
+import 'package:shape_theory/components/game_over_component.dart';
 import 'package:shape_theory/game/assets.dart';
 import 'package:shape_theory/game/configuration.dart';
 import 'package:shape_theory/game/game_storage.dart';
@@ -50,8 +51,13 @@ class Dino extends SpriteComponent
 
   // Showing game over page.
   void gameOver() {
-    game.overlays.add('gameOver');
-    game.pauseEngine();
+    // game.overlays.add('gameOver');
+    // game.pauseEngine();
+    game.gameLoop.isPlaying = false;
+    game.gameLoop.timeScale = 0.0;
+    game.background.timeScale = 0.0;
+    game.world.add(GameOverComponent());
+    // game.pauseEngine();
     GameStorage.saveScore(score);
   }
 
