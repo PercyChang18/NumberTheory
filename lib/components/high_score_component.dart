@@ -82,7 +82,6 @@ class HighScoreComponent extends PositionComponent
         ),
       );
     } else {
-      // Loop through up to top 5 scores and render rows dynamically
       double currentY = 120;
       final maxDisplayRows = scores.length < 10 ? scores.length : 10;
 
@@ -92,7 +91,6 @@ class HighScoreComponent extends PositionComponent
         final scoreVal = entry['score']?.toString() ?? '0';
         final dateVal = entry['date']?.toString() ?? '---';
 
-        // Add row text assets spaced vertically by currentY offsets
         add(
           TextComponent(
             text: '$rank',
@@ -122,7 +120,6 @@ class HighScoreComponent extends PositionComponent
       }
     }
 
-    // 4. Back Menu Button (Leverages your working component button engine)
     add(
       MenuButton(
         label: 'BACK TO MENU',

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class MenuButton extends PositionComponent with TapCallbacks, HoverCallbacks {
   final String label;
   final VoidCallback onTapAction;
+  final Color baseColor;
 
   bool _isHovered = false;
 
@@ -12,15 +13,16 @@ class MenuButton extends PositionComponent with TapCallbacks, HoverCallbacks {
     required this.label,
     required this.onTapAction,
     required super.position,
-  }) : super(size: Vector2(230, 50), anchor: Anchor.center);
+    Color? backgroundColor,
+  }) : baseColor = backgroundColor ?? Color(0xFF9D92F5),
+       super(size: Vector2(230, 50), anchor: Anchor.center);
 
   @override
   void render(Canvas canvas) {
     super.render(canvas);
 
     // 1. Draw Rounded Rectangle Button Background
-    final paint = Paint()
-      ..color = _isHovered ? Color(0xFFB4AAFF) : Color(0xFF9D92F5);
+    final paint = Paint()..color = _isHovered ? Color(0xFFCBC5F4) : baseColor;
     final rrect = RRect.fromRectAndRadius(
       size.toRect(),
       const Radius.circular(10),

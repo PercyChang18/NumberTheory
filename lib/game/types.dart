@@ -51,7 +51,7 @@ extension DifficultyExtension on Difficulty {
           speed: 500,
           jumpSpeed: -730,
           gravity: 880,
-          numberInterval: 2.0,
+          numberInterval: 2.5,
           scorePerObstacle: 10,
         );
     }

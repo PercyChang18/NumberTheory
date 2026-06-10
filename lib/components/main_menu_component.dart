@@ -59,7 +59,7 @@ class MainMenuComponent extends PositionComponent
       MenuButton(
         label: 'DIFFICULTY',
         position: Vector2(centerX, 480),
-        onTapAction: () => {},
+        onTapAction: () => game.showDifficultyPage(),
       ),
     );
 
@@ -75,9 +75,7 @@ class MainMenuComponent extends PositionComponent
       MenuButton(
         label: 'SOUND',
         position: Vector2(centerX, 640),
-        onTapAction: () {
-          // Handle sound setting toggling natively
-        },
+        onTapAction: () => game.showSoundPage(),
       ),
     );
   }

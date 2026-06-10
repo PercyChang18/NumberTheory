@@ -7,12 +7,14 @@ import 'package:flame/game.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:shape_theory/components/background.dart';
+import 'package:shape_theory/components/difficulty_component.dart';
 import 'package:shape_theory/components/dino.dart';
 import 'package:shape_theory/components/ground.dart';
 import 'package:shape_theory/components/high_score_component.dart';
 import 'package:shape_theory/components/jump_button.dart';
 import 'package:shape_theory/components/main_menu_component.dart';
 import 'package:shape_theory/components/number.dart';
+import 'package:shape_theory/components/sound_component.dart';
 import 'package:shape_theory/game/assets.dart';
 import 'package:shape_theory/game/configuration.dart';
 import 'package:shape_theory/game/game_loop.dart';
@@ -29,6 +31,8 @@ class NumberTheoryGame extends FlameGame
   late Background background;
   late MainMenuComponent mainMenu;
   late HighScoreComponent highScore;
+  late SoundComponent soundPage;
+  late DifficultyComponent difficultyPage;
   bool isPlaying = false;
   static final Vector2 windowSize = Vector2(1280, 800);
 
@@ -71,6 +75,16 @@ class NumberTheoryGame extends FlameGame
   void showHighScores() {
     mainMenu.removeFromParent();
     world.add(highScore = HighScoreComponent());
+  }
+
+  void showSoundPage() {
+    mainMenu.removeFromParent();
+    world.add(soundPage = SoundComponent());
+  }
+
+  void showDifficultyPage() {
+    mainMenu.removeFromParent();
+    world.add(difficultyPage = DifficultyComponent());
   }
 
   void startBgm() {
