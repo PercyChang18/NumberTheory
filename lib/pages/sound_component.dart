@@ -7,6 +7,7 @@ import 'package:shape_theory/game/configuration.dart';
 import 'package:shape_theory/game/game_storage.dart';
 import 'package:shape_theory/game/number_theory_game.dart';
 
+// Sound page to turn on / off the sound.
 class SoundComponent extends PositionComponent
     with HasGameReference<NumberTheoryGame> {
   SoundComponent() : super(size: Vector2(1280, 800));

@@ -1,5 +1,4 @@
 // Configuration of the game.
-
 import 'package:flutter/material.dart';
 import 'package:shape_theory/game/types.dart';
 
@@ -8,7 +7,7 @@ class Configuration {
   static const groundHeight = 260.0;
 
   static Difficulty currentDifficulty = Difficulty.easy;
-  static bool soundEnabled = true;
+  static bool soundEnabled = false;
 
   // Game button settings
   static const buttonWidth = 150.0;

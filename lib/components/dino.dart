@@ -2,7 +2,7 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
 import 'package:flutter/material.dart';
-import 'package:shape_theory/components/game_over_component.dart';
+import 'package:shape_theory/pages/game_over_component.dart';
 import 'package:shape_theory/game/assets.dart';
 import 'package:shape_theory/game/configuration.dart';
 import 'package:shape_theory/game/game_storage.dart';

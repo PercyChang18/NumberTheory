@@ -11,6 +11,7 @@ import 'package:shape_theory/game/configuration.dart';
 import 'package:shape_theory/game/number_theory_game.dart';
 import 'package:shape_theory/game/types.dart';
 
+// This component is the core gameplay loop. It starts the game, generates obstacle (number) with cooresponding buttons, and displaying the score.
 class GameLoop extends PositionComponent
     with
         HasGameReference<NumberTheoryGame>,
@@ -23,6 +24,8 @@ class GameLoop extends PositionComponent
   bool isPlaying = false;
 
   PositionComponent? buttonContainer;
+
+  // rate of number obstacle generation
   Timer interval = Timer(
     Configuration.currentDifficulty.settings.numberInterval,
     repeat: true,
@@ -40,6 +43,13 @@ class GameLoop extends PositionComponent
     isPlaying = true;
   }
 
+  // Generate a random number and call the spawnNumberAndButtons method to create the obstacle and buttons.
+  void _spawnRandomNumber() {
+    final randomNum = 1 + Random().nextInt(20);
+    spawnNumberAndButtons(randomNum);
+  }
+
+  // Spawn the number obstacle and 3 buttons to the game world.
   Future<void> spawnNumberAndButtons(int correctNumber) async {
     activeNumber = correctNumber;
 
@@ -66,12 +76,7 @@ class GameLoop extends PositionComponent
     add(Number(number: correctNumber));
   }
 
-  void _spawnRandomNumber() {
-    final randomNum = 1 + Random().nextInt(20);
-    spawnNumberAndButtons(randomNum);
-  }
-
-  // Generate 3 buttons: 1 correct number, 2 unique incorrect numbers
+  // Generate list of 3 numbers for buttons: 1 correct number, 2 unique incorrect numbers
   List<int> generateRandomNumberButtons(int correctNumber) {
     List<int> results = [correctNumber];
 
@@ -87,6 +92,7 @@ class GameLoop extends PositionComponent
     return results;
   }
 
+  // Build the score text to display on screen.
   TextComponent buildScore() {
     return TextComponent(
       text: 'Score: 0',

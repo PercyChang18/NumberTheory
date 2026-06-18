@@ -6,6 +6,7 @@ import 'package:shape_theory/game/configuration.dart';
 import 'package:shape_theory/game/number_theory_game.dart';
 import 'package:shape_theory/game/types.dart';
 
+// The level where Dino and obstacles will be standing on.
 class Ground extends ParallaxComponent<NumberTheoryGame> {
   Ground();
 

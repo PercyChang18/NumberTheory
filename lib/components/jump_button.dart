@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:shape_theory/components/button_frame.dart';
 import 'package:shape_theory/game/configuration.dart';
 import 'package:shape_theory/game/game_loop.dart';
-import 'package:shape_theory/game/number_theory_game.dart';
 
 // This class is the buttons for users to click in game.
 class JumpButton extends HudButtonComponent with TapCallbacks {

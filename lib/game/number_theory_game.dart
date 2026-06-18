@@ -1,32 +1,21 @@
 import 'dart:async';
-import 'dart:math';
-
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:shape_theory/components/background.dart';
-import 'package:shape_theory/components/difficulty_component.dart';
-import 'package:shape_theory/components/dino.dart';
-import 'package:shape_theory/components/ground.dart';
-import 'package:shape_theory/components/high_score_component.dart';
-import 'package:shape_theory/components/jump_button.dart';
-import 'package:shape_theory/components/main_menu_component.dart';
-import 'package:shape_theory/components/number.dart';
-import 'package:shape_theory/components/sound_component.dart';
+import 'package:shape_theory/pages/difficulty_component.dart';
+import 'package:shape_theory/pages/high_score_component.dart';
+import 'package:shape_theory/pages/main_menu_component.dart';
+import 'package:shape_theory/pages/sound_component.dart';
 import 'package:shape_theory/game/assets.dart';
 import 'package:shape_theory/game/configuration.dart';
 import 'package:shape_theory/game/game_loop.dart';
 import 'package:shape_theory/game/game_storage.dart';
-import 'package:shape_theory/game/types.dart';
 
 class NumberTheoryGame extends FlameGame
     with TapCallbacks, HasCollisionDetection, MouseMovementDetector {
-  // late Dino dino;
-  // late int activeNumber;
-  // late Ground ground;
-  // late TextComponent score;
   late GameLoop gameLoop;
   late Background background;
   late MainMenuComponent mainMenu;
@@ -35,13 +24,6 @@ class NumberTheoryGame extends FlameGame
   late DifficultyComponent difficultyPage;
   bool isPlaying = false;
   static final Vector2 windowSize = Vector2(1280, 800);
-
-  // For the 3 buttons group alone with each shape.
-  PositionComponent? buttonContainer;
-  Timer interval = Timer(
-    Configuration.currentDifficulty.settings.numberInterval,
-    repeat: true,
-  );
 
   @override
   Future<void> onLoad() async {
@@ -52,11 +34,9 @@ class NumberTheoryGame extends FlameGame
     );
 
     camera.viewfinder.anchor = Anchor.topLeft;
-    // debugMode = true;
     Configuration.currentDifficulty = await GameStorage.loadDifficulty();
     Configuration.soundEnabled = await GameStorage.loadSoundPreference();
     world.add(background = Background()..priority = -1);
-    // world.add(Ground());
 
     await FlameAudio.bgm.initialize();
     await FlameAudio.audioCache.load(Assets.bgm);
@@ -68,6 +48,7 @@ class NumberTheoryGame extends FlameGame
     showMainMenu();
   }
 
+  // Methods to navigating through different pages.
   void showMainMenu() {
     world.add(mainMenu = MainMenuComponent());
   }
@@ -87,6 +68,7 @@ class NumberTheoryGame extends FlameGame
     world.add(difficultyPage = DifficultyComponent());
   }
 
+  // start / stop bgm.
   void startBgm() {
     FlameAudio.bgm.play(Assets.bgm, volume: 0.35);
   }
@@ -106,71 +88,4 @@ class NumberTheoryGame extends FlameGame
     mainMenu.removeFromParent();
     world.add(gameLoop = GameLoop());
   }
-
-  // Future<void> spawnNumberAndButtons(int correctNumber) async {
-  //   activeNumber = correctNumber;
-
-  //   buttonContainer?.removeFromParent();
-  //   buttonContainer = PositionComponent();
-  //   world.add(buttonContainer!);
-
-  //   final numbers = generateRandomNumberButtons(correctNumber);
-  //   double startX = (size.x - Configuration.totalWidth) / 2;
-
-  //   for (int i = 0; i < numbers.length; i++) {
-  //     buttonContainer!.add(
-  //       JumpButton(
-  //         label: numberToWord[numbers[i]]!,
-  //         position: Vector2(
-  //           startX + (Configuration.buttonWidth + Configuration.spacing) * i,
-  //           620,
-  //         ),
-  //         number: numbers[i],
-  //       ),
-  //     );
-  //   }
-
-  //   world.add(Number(number: correctNumber));
-  // }
-
-  // void _spawnRandomNumber() {
-  //   final randomNum = 1 + Random().nextInt(20);
-  //   spawnNumberAndButtons(randomNum);
-  // }
-
-  // // Generate 3 buttons: 1 correct number, 2 unique incorrect numbers
-  // List<int> generateRandomNumberButtons(int correctNumber) {
-  //   List<int> results = [correctNumber];
-
-  //   while (results.length < 3) {
-  //     int randomIncorrect = 1 + Random().nextInt(10);
-  //     // Ensure we don't pick the correct number or a duplicate incorrect one
-  //     if (!results.contains(randomIncorrect)) {
-  //       results.add(randomIncorrect);
-  //     }
-  //   }
-
-  //   results.shuffle();
-  //   return results;
-  // }
-
-  // TextComponent buildScore() {
-  //   return TextComponent(
-  //     text: 'Score: 0',
-  //     position: Vector2(size.x / 10, (size.y / 2) * 0.2),
-  //     anchor: Anchor.center,
-  //     textRenderer: TextPaint(
-  //       style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-  //     ),
-  //   );
-  // }
-
-  // @override
-  // void update(double dt) {
-  //   super.update(dt);
-  //   if (isPlaying) {
-  //     interval.update(dt);
-  //     score.text = 'Score: ${dino.score}';
-  //   }
-  // }
 }

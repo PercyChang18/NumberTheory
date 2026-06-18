@@ -1,5 +1,4 @@
-// This class is for different enums in the game.
-// enum NumberType { none, one, two, three, four, five }
+// This class is for different types in the game.
 
 enum Difficulty { easy, medium, hard }
 

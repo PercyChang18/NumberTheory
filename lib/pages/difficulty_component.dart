@@ -8,6 +8,7 @@ import 'package:shape_theory/game/game_storage.dart';
 import 'package:shape_theory/game/number_theory_game.dart';
 import 'package:shape_theory/game/types.dart';
 
+// Difficulty setting page.
 class DifficultyComponent extends PositionComponent
     with HasGameReference<NumberTheoryGame> {
   DifficultyComponent() : super(size: Vector2(1280, 800));

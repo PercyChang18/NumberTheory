@@ -4,6 +4,7 @@ import 'package:shape_theory/components/menu_button.dart';
 import 'package:shape_theory/game/number_theory_game.dart';
 import 'package:shape_theory/game/game_storage.dart';
 
+// High socre page to display the top 10 scores.
 class HighScoreComponent extends PositionComponent
     with HasGameReference<NumberTheoryGame> {
   HighScoreComponent() : super(size: Vector2(1280, 800));
@@ -26,24 +27,6 @@ class HighScoreComponent extends PositionComponent
 
     final double centerX = size.x / 2;
 
-    // 1. Screen Title Text
-    // add(
-    //   TextComponent(
-    //     text: 'HIGH SCORES',
-    //     position: Vector2(centerX, 150),
-    //     anchor: Anchor.center,
-    //     textRenderer: TextPaint(
-    //       style: const TextStyle(
-    //         fontSize: 70,
-    //         fontWeight: FontWeight.bold,
-    //         color: Colors.white,
-    //       ),
-    //     ),
-    //   ),
-    // );
-
-    // 2. Table Headers (Rank, Score, Date)
-    // Placed at absolute positions to form clear vertical columns
     add(
       TextComponent(
         text: 'RANK',
@@ -69,7 +52,6 @@ class HighScoreComponent extends PositionComponent
       ),
     );
 
-    // 3. Load Async Data natively in the onLoad sequence
     final scores = await GameStorage.loadScores();
 
     if (scores.isEmpty) {

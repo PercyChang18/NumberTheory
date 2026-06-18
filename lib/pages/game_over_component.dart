@@ -1,12 +1,12 @@
 import 'dart:async';
 
 import 'package:flame/components.dart';
-import 'package:shape_theory/components/main_menu_component.dart';
 import 'package:shape_theory/components/menu_button.dart';
 import 'package:shape_theory/components/number.dart';
 import 'package:shape_theory/game/configuration.dart';
 import 'package:shape_theory/game/number_theory_game.dart';
 
+// Game over page. It has a button to main menu and a button to replay the game.
 class GameOverComponent extends PositionComponent
     with HasGameReference<NumberTheoryGame> {
   GameOverComponent() : super(size: Vector2(1280, 720));

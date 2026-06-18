@@ -2,6 +2,7 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flutter/material.dart';
 
+// The button for the menu and setting pages. Its behavior is based on the VoidCallback funtion it receives.
 class MenuButton extends PositionComponent with TapCallbacks, HoverCallbacks {
   final String label;
   final VoidCallback onTapAction;
@@ -21,7 +22,6 @@ class MenuButton extends PositionComponent with TapCallbacks, HoverCallbacks {
   void render(Canvas canvas) {
     super.render(canvas);
 
-    // 1. Draw Rounded Rectangle Button Background
     final paint = Paint()..color = _isHovered ? Color(0xFFCBC5F4) : baseColor;
     final rrect = RRect.fromRectAndRadius(
       size.toRect(),
@@ -29,7 +29,6 @@ class MenuButton extends PositionComponent with TapCallbacks, HoverCallbacks {
     );
     canvas.drawRRect(rrect, paint);
 
-    // 2. Render Text Label Perfectly Centered
     final textPainter = TextPaint(
       style: const TextStyle(
         fontSize: 25,

@@ -5,6 +5,7 @@ import 'package:shape_theory/game/assets.dart';
 import 'package:shape_theory/game/configuration.dart';
 import 'package:shape_theory/game/number_theory_game.dart';
 
+// Main menu page. It has buttons to different setting pages and start the game.
 class MainMenuComponent extends PositionComponent
     with HasGameReference<NumberTheoryGame> {
   MainMenuComponent() : super(size: Vector2(1280, 800));

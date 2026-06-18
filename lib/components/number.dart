@@ -5,6 +5,7 @@ import 'package:shape_theory/game/configuration.dart';
 import 'package:shape_theory/game/number_theory_game.dart';
 import 'package:shape_theory/game/types.dart';
 
+// The number obstacle in the game.
 class Number extends PositionComponent with HasGameReference<NumberTheoryGame> {
   final int number;
   late TextPainter _strokePainter;
@@ -54,19 +55,6 @@ class Number extends PositionComponent with HasGameReference<NumberTheoryGame> {
     );
   }
 
-  // Color _getColor() {
-  //   // Unique colors for numbers to help kids associate
-  //   final colors = [
-  //     Colors.orange,
-  //     Colors.blue,
-  //     Colors.green,
-  //     Colors.red,
-  //     Colors.purple,
-  //     Colors.teal,
-  //   ];
-  //   return colors[number % colors.length];
-  // }
-
   @override
   void render(Canvas canvas) {
     super.render(canvas);
@@ -93,6 +81,7 @@ class Number extends PositionComponent with HasGameReference<NumberTheoryGame> {
     }
   }
 
+  // Update the score based on the playing difficulty.
   void updateScore() {
     game.gameLoop.dino.score +=
         Configuration.currentDifficulty.settings.scorePerObstacle;
